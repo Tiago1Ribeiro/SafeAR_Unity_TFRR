@@ -22,6 +22,7 @@ For example:
 **Note**: This assumes that the YOLOv8 model is trained on the COCO dataset. See the list with ID number and corresponding category [here](coco80list.txt).
 
 This code snippet shows how to configure the obfuscation settings by creating a dictionary that maps class IDs to obfuscation types. You can add or remove entries as needed to customize the obfuscation settings for your specific use case.
+
 8. **Test the System**: Run the project in Unity Editor to test the obfuscation functionality.
 9. **Optimization**: Adjust parameters and optimize performance as needed.
 
