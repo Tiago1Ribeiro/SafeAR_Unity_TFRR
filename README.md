@@ -1,4 +1,4 @@
-### Unity Editor Setup
+## Unity Editor Setup
 
 1. **Create a New Unity Project**: Open Unity Hub, create a new project, and select the Unity version.
 2. **Import Base Scripts**: Copy `CameraManager.cs`, `ImageObfuscator.cs`, `ImgUtils.cs` and `ImageWriter.cs` into your project's `Assets` folder.
@@ -27,7 +27,7 @@ This code snippet shows how to configure the obfuscation settings by creating a 
 9. **Optimization**: Adjust parameters and optimize performance as needed.
 
 
-### CameraManager Script
+## CameraManager Script
 
 This script manages a camera feed and applies obfuscation to detected objects in real-time. It uses a WebCamTexture to capture video from the device's camera and a RawImage to display the obfuscated video.
 
