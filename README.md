@@ -19,7 +19,8 @@ For example:
          // Add or remove entries as needed
          };
    ```
-Note: The example assumes that the YOLOv8 model is trained on the COCO dataset. If your model is trained on a different dataset, you will need to check the ID correspondence for your particular case. For the COCO dataset, you can consult the class to ID mapping
+**Note**: The example assumes that the YOLOv8 model is trained on the COCO dataset. If your model is trained on a different dataset, you will need to check the ID correspondence for your particular case. For the COCO dataset, you can consult the class to ID mapping
+
 8. **Test the System**: Run the project in Unity Editor to test the obfuscation functionality.
 9. **Optimization**: Adjust parameters and optimize performance as needed.
 
@@ -28,7 +29,7 @@ Note: The example assumes that the YOLOv8 model is trained on the COCO dataset. 
 
 This script manages a camera feed and applies obfuscation to detected objects in real-time. It uses a WebCamTexture to capture video from the device's camera and a RawImage to display the obfuscated video.
 
-How it works:
+#### How it works:
 
 In the `Start()` method, the script initializes the camera and sets up an obfuscation mapping that associates object classes with obfuscation types:
 ```csharp
@@ -56,15 +57,13 @@ void Update()
    }
 }
 ```
-**Note**: This script assumes that the `ImgObfuscator` script is properly configured and that the YOLOv8 model is trained on the COCO dataset.
-
 ## Repo Structure
 
 ```markdown
 SafeARUnity/
 ├── Models/
-│   ├── 🧠 yolov8n-seg.onnx       # YOLOv8 instance segmentation: nano
-│   └── 🧠 yolov8s-seg_v2.onnx    # YOLOv8 instance segmentation: small
+│   ├── 🧠 yolov8n-seg.onnx       # YOLOv8 instance segmentation model: nano (13.8 Mb)
+│   └── 🧠 yolov8s-seg_v2.onnx    # YOLOv8 instance segmentation model: small (47.5 Mb)
 ├── 📹 CamaraManager.cs           # Manages camera feed and obfuscation
 ├── 📜 coco80list.txt             # List of 80 COCO object categories
 ├── 📸 ImageWriter.cs             # Debug Class to check images
