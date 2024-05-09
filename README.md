@@ -4,9 +4,9 @@
 2. **Import Base Scripts**: Copy `CameraManager.cs`, `ImageObfuscator.cs`, `ImgUtils.cs` and `ImageWriter.cs` into your project's `Assets` folder.
 3. **Set Up Camera and UI**: Create a GameObject for the camera and add a `RawImage` component for display. Assign the `RawImage` to the `display` field in `CameraManager`.
 4. **Configure Image Obfuscator**: Add `ImageObfuscator` to the camera GameObject and configure its parameters in the Inspector.
-5. **Add YOLOv8 Model**: Import a compatible `onnx` YOLOv8  instance segmentation model and assign it to the `yoloV8Asset` field in `ImageObfuscator`.
-6. **Configure Runtime Environment**: Ensure [Unity.Sentis](https://docs.unity3d.com/Packages/com.unity.sentis@1.2/manual/index.html) (version 1.2.0) is installed using the Package Manager (com.unity.sentis). Then, adjust the device type and backend in the ImageObfuscator script to configure the runtime environment for your project.
-7. **Configure Obfuscation Settings**: In `CameraManager.cs`, define the obfuscation mapping in the `Start()` method. This mapping associates class IDs with obfuscation types. Available obfuscation types include Masking, Pixelation, Blurring, or None.
+5. **Add YOLOv8 Model**: Import a compatible `onnx` YOLOv8 instance segmentation model and assign it to the `yoloV8Asset` field in `ImageObfuscator`.
+6. **Configure Runtime Environment**: Ensure [Unity.Sentis](https://docs.unity3d.com/Packages/com.unity.sentis@1.2/manual/index.html) (version `1.2.0-exp.2` or greater) is installed using the Package Manager (com.unity.sentis). Then, adjust the device type and backend in the `ImageObfuscator` script to configure the runtime environment for your project.
+7. **Configure Obfuscation Settings**: In CameraManager.cs, create a dictionary that maps class IDs to obfuscation types in the Start() method. Available obfuscation types include `Masking`, `Pixelation`, `Blurring`, or `None` (default value). Customize the settings for your use case by adding or removing entries.
 For example:
 
    ```csharp
@@ -19,10 +19,7 @@ For example:
          // Add or remove entries as needed
          };
    ```
-**Note**: This assumes that the YOLOv8 model is trained on the COCO dataset. See the list with ID number and corresponding category [here](coco80mapping.txt).
-
-This code snippet shows how to configure the obfuscation settings by creating a dictionary that maps class IDs to obfuscation types. You can add or remove entries as needed to customize the obfuscation settings for your specific use case.
-
+Note: The example assumes that the YOLOv8 model is trained on the COCO dataset. If your model is trained on a different dataset, you will need to check the ID correspondence for your particular case. For the COCO dataset, you can consult the class to ID mapping
 8. **Test the System**: Run the project in Unity Editor to test the obfuscation functionality.
 9. **Optimization**: Adjust parameters and optimize performance as needed.
 
@@ -33,7 +30,7 @@ This script manages a camera feed and applies obfuscation to detected objects in
 
 How it works:
 
-In the Start() method, the script initializes the camera and sets up an obfuscation mapping that associates object classes with obfuscation types:
+In the `Start()` method, the script initializes the camera and sets up an obfuscation mapping that associates object classes with obfuscation types:
 ```csharp
 void Start()
 {
@@ -48,7 +45,7 @@ InitializeCamera();
     };
 }
 ```
-In the Update() method, the script checks if the camera is playing and if a new frame is available. If so, it runs the ImgObfuscator script to apply obfuscation to the detected objects in the frame:
+In the `Update()` method, the script checks if the camera is playing and if a new frame is available. If so, it runs the `imgObfuscator` to apply obfuscation to the detected objects in the frame:
 ```csharp
 void Update()
    {
@@ -59,10 +56,9 @@ void Update()
    }
 }
 ```
-When the script is destroyed, it stops the camera and destroys the obfuscated texture to free up resources.
 **Note**: This script assumes that the `ImgObfuscator` script is properly configured and that the YOLOv8 model is trained on the COCO dataset.
 
-## Repo Struture
+## Repo Structure
 
 ```markdown
 SafeARUnity/
